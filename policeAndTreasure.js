@@ -5,7 +5,7 @@ function searchTreasure(pos, map) {
   const mapWidth = map[0].length
   let nodes = [pos]
   // Use this dictionary for prevent visit same point two times
-  let visitedPos = {}
+  const visitedPos = {}
 
   while (nodes.length) {
     const { x, y } = nodes.shift()
@@ -30,8 +30,28 @@ function searchTreasure(pos, map) {
   return undefined
 }
 
-var testCase = [
-  [0, 0],
-  [0, 2],
+function searchMap(map) {
+  const polices = []
+  const mapHeight = map.length
+  const mapWidth = map[0].length
+  for (let i = 0; i < mapHeight; i++) {
+    for (let j = 0; j < mapWidth; j++) {
+      if (map[i][j] === 3) polices.push({ y: i, x: j })
+    }
+  }
+
+  const policeCount = polices.length
+  const res = []
+  for (let i = 0; i < policeCount; i++) {
+    const treasurePos = searchTreasure(polices[i], map)
+    res.push({ policePos: polices[i], treasurePos })
+  }
+  return res
+}
+
+const testCase = [
+  [0, 0, 1],
+  [2, 0, 3],
+  [2, 0, 3]
 ]
-console.log(searchTreasure({x: 0, y: 0},testCase))
+console.log(searchMap(testCase))
