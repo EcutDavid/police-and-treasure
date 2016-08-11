@@ -49,9 +49,51 @@ function searchMap(map) {
   return res
 }
 
-const testCase = [
+
+
+let counter = 0
+function test(testCase) {
+  console.log("*********************")
+  console.log(`Test case ${++counter}:`)
+  for (let i = 0; i < testCase.length; i++) {
+    console.log(testCase[i])
+  }
+
+  console.log("Result:")
+  console.log(searchMap(testCase))
+}
+
+const testCase1 = [
   [0, 0, 1],
   [2, 0, 3],
   [2, 0, 3]
 ]
-console.log(searchMap(testCase))
+const testCase2 = [
+  [0, 0, 1, 0, 0],
+  [2, 0, 1, 1, 3],
+  [2, 0, 0, 0, 3]
+]
+const testCase3 = [
+  [0, 0, 1, 0, 0],
+  [2, 0, 1, 1, 3],
+  [2, 0, 0, 0, 3],
+  [1, 0, 0, 1, 1],
+  [1, 0, 0, 1, 3],
+]
+const testCase4 = [
+  [0, 0, 1, 0, 0],
+  [1, 0, 1, 1, 3],
+  [1, 0, 0, 0, 3],
+  [1, 0, 0, 1, 1],
+  [1, 0, 0, 1, 3],
+]
+const testCase5 = [
+  [0, 0, 1, 0, 0],
+  [1, 0, 1, 1, 0],
+]
+
+test(testCase1)
+test(testCase2)
+test(testCase3)
+test(testCase4)
+test(testCase5)
